@@ -1,4 +1,5 @@
 const express = require("express");
+const fortune = require("./lib/fortune.js");
 
 const app = express();
 
@@ -21,10 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  let fortunes = ["yes", "no", "maybe", "try again later"];
-  let random = fortunes[Math.floor(Math.random() * fortunes.length)];
-
-  res.render("about", { fortune: random });
+  res.render("about", { fortune: fortune.getFortune() });
 });
 
 // Custom 404 page
